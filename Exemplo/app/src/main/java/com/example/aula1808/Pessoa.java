@@ -1,4 +1,5 @@
 package com.example.aula1808;
+/*classe pessoa faz a ponte entre o front end e o banco de dados, colocando a informação no banco de dados e lendo estes dados*/
 
 public class Pessoa {
 
@@ -8,6 +9,7 @@ public class Pessoa {
     private String email;
     private String endereco;
 
+    /*Metodo construtor, sendo implicito, tendo que ser declarado*/
     public Pessoa(int codigo, String nome, String telefone, String email, String endereco) {
         this.codigo = codigo;
         this.nome = nome;
@@ -16,6 +18,7 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
+                    /*Esta é a assinatura, sendo esta sem o codigo*/
     public Pessoa(String nome, String telefone, String email, String endereco) {
         this.nome = nome;
         this.telefone = telefone;
@@ -26,7 +29,7 @@ public class Pessoa {
     public Pessoa() {
 
     }
-
+    /*encapsulamento dos atributos*/
     public int getCodigo() {
         return codigo;
     }

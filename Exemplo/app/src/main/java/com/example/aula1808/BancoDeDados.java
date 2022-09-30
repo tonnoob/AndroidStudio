@@ -1,4 +1,5 @@
 package com.example.aula1808;
+/*android studio utiliza o SQLite com banco de dados*/
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,6 +14,8 @@ import java.util.List;
 
 public class BancoDeDados extends SQLiteOpenHelper {
 
+    /*Criando um atributo que é uma constante*/
+    /*Aqui tambem está classificando que esta na versão 1 do bd do projeto*/
     public static final int VERSAO_BANCO = 1;
     public static final String BANCO_AGENDA = "db_agenda";
 
