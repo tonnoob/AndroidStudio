@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+//Extende a compatibilidade com versões anteriores
 public class MainActivity extends AppCompatActivity {
 
     // botão cadastro, sendo um atributo, guardando o id
