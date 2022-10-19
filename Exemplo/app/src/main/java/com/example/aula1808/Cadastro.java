@@ -18,24 +18,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cadastro extends AppCompatActivity {
-
+    
+     //Atribuição de campos de texto
     EditText cCodigo;
     EditText cNome;
     EditText cTelefone;
     EditText cEmail;
     EditText cEndereco;
-
+    
+    //Atribuição de botões
     Button btSalvar;
     Button btExcluir;
     Button btLimpar;
-
+    
+    //Atribuição da listview, que mostra os itens da tabela
     ListView viewPessoa;
-
+    
+    //Atribuição de adapter
     ArrayAdapter <String> adapter;
+    
+     //Array Dinâmico
     ArrayList <String> arrayList;
-
+    
+    //InputMethodManager é uma tecnologia usada por um aplicativo para se comunicar com um editor de método de entrada
     InputMethodManager imm;
-
+    
+    //Instanciamento de um objeto novo
     BancoDeDados db = new BancoDeDados(this);
 
 
@@ -45,7 +53,8 @@ public class Cadastro extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         imm = (InputMethodManager) this.getSystemService(Service.INPUT_METHOD_SERVICE);
-
+        
+        //Ligação entre o back-end e o front-end
         cCodigo = findViewById(R.id.txtCodigo);
 
         cNome = findViewById(R.id.edt_nome);
@@ -58,7 +67,9 @@ public class Cadastro extends AppCompatActivity {
         btLimpar = findViewById(R.id.btnLimpar);
 
         cNome.requestFocus();
-
+        
+        
+        //Exibe o registro da pessoa selecionada
         viewPessoa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
@@ -86,26 +97,31 @@ public class Cadastro extends AppCompatActivity {
 
             }
         });
-
+        
+        //Salva um novo cadastro
         btSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //Atribui valores digitados pelo usuário
                 String codigo = cCodigo.getText().toString();
                 String nome = cNome.getText().toString();
                 String telefone = cTelefone.getText().toString();
                 String email = cEmail.getText().toString();
                 String endereco = cEndereco.getText().toString();
-
+                
+                //Se o nome estiver vazio, exibe uma mensagem de erro
                 if(nome.isEmpty()) {
                     cNome.setError("Este campo é brigatório!");
+                    
+                 //Se os campos estiverem preenchidos de maneira correta, adiciona um novo registro no banco de dados
                 } else if (codigo.isEmpty()) {
                     db.addPessoa(new Pessoa(nome, telefone, email, endereco));
                     Toast.makeText(Cadastro.this, "Cadastro salvo com sucesso!", Toast.LENGTH_SHORT).show();
                     listarPessoas();
                     limparCampos();
                     escondeTeclado();
-
+                    
+                //Se o código já for existente no banco, somente atualiza os valores do registro
                 } else {
                     db.atualizarPessoa(new Pessoa(Integer.parseInt(codigo), nome, telefone, email, endereco));
                     Toast.makeText(Cadastro.this, "Cadastro atualizado com Sucesso!", Toast.LENGTH_SHORT).show();
@@ -113,12 +129,14 @@ public class Cadastro extends AppCompatActivity {
                 }
             }
         });
-
+        
+        //Exclui o registro da pessoa selecionada
         btExcluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String codigo = cCodigo.getText().toString();
+                 //Se nada estiver selecionado, apenas exibe uma mensagem de erro
                 if(codigo.isEmpty()) {
                     Toast.makeText(Cadastro.this, "Nenhuma pessoa está selecionada", Toast.LENGTH_SHORT).show();
 
@@ -137,7 +155,8 @@ public class Cadastro extends AppCompatActivity {
             }
         });
     }
-
+    
+    //Método que deixa o campo selecionado vazio
     private void limparCampos(){
 
         cNome.setText("");
@@ -148,11 +167,13 @@ public class Cadastro extends AppCompatActivity {
         // o cursor ira mostrar marcado
         cNome.requestFocus();
     }
-
+    
+    //Método que esconde o teclado do android
     void escondeTeclado(){
         imm.hideSoftInputFromWindow(cNome.getWindowToken(),0);
     }
-
+    
+    //Método que lista os registros da tabela pessoa
     public void listarPessoas(){
 
         List<Pessoa> pessoas = db.listaPessoa();
