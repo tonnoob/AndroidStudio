@@ -1,5 +1,4 @@
 package com.example.aula1808;
-/*android studio utiliza o SQLite com banco de dados*/
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,8 +13,6 @@ import java.util.List;
 
 public class BancoDeDados extends SQLiteOpenHelper {
 
-    /*Criando um atributo que é uma constante*/
-    /*Aqui tambem está classificando que esta na versão 1 do bd do projeto*/
     public static final int VERSAO_BANCO = 1;
     public static final String BANCO_AGENDA = "db_agenda";
 
@@ -23,8 +20,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
     public BancoDeDados(Context context) {
         super(context, BANCO_AGENDA, null, VERSAO_BANCO);
     }
-    
-    //Atribui o nome dos campos
+
     public static final String TABELA_AGENDA = "tab_agenda";
     public static final String COLUNA_CODIGO = "codigo";
     public static final String COLUNA_NOME = "nome";
@@ -35,7 +31,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //Executa o comando de criar tabela
 
         String CRIAR_TABELA = "CREATE TABLE " + TABELA_AGENDA + "(" + COLUNA_CODIGO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUNA_NOME + " TEXT," + COLUNA_TELEFONE + " TEXT," + COLUNA_EMAIL + " TEXT," + COLUNA_ENDERECO + " TEXT)";
@@ -53,8 +48,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues valor = new ContentValues();
-        
-        //Insere os valores nos campos da tabela
+
         valor.put(COLUNA_NOME, pessoa.getNome());
         valor.put(COLUNA_TELEFONE, pessoa.getTelefone());
         valor.put(COLUNA_EMAIL, pessoa.getEmail());
@@ -68,7 +62,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
     void apagarPessoa(Pessoa pessoa){
 
         SQLiteDatabase db = this.getWritableDatabase();
-        //Deleta o registro da tabela
 
         db.delete(TABELA_AGENDA, COLUNA_CODIGO + " = ?", new String[] {
                 String.valueOf(pessoa.getCodigo())
@@ -80,7 +73,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
     Pessoa selecionarPessoa(int codigo){
 
         SQLiteDatabase db = this.getReadableDatabase();
-        //Cursor aponta para um registro da tabela
 
         Cursor cursor = db.query(TABELA_AGENDA, new String[]{COLUNA_CODIGO,COLUNA_NOME,COLUNA_TELEFONE,COLUNA_EMAIL,COLUNA_ENDERECO},
                 COLUNA_CODIGO + " = ?", new String[]{String.valueOf(codigo)}, null, null, null, null);
@@ -100,7 +92,6 @@ public class BancoDeDados extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues valor = new ContentValues();
-        //Atualiza valores de um registro jÃ¡ existente na tabela
 
         valor.put(COLUNA_NOME, pessoa.getNome());
         valor.put(COLUNA_TELEFONE, pessoa.getTelefone());
@@ -112,8 +103,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
         db.close();
     }
-    
-    //Lista todos os registros da tabela
+
     public List<Pessoa> listaPessoa(){
         List<Pessoa> pessoaLista = new ArrayList<Pessoa>();
 
@@ -132,6 +122,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
                     pessoa.setTelefone(cursor.getString(2));
                     pessoa.setEmail(cursor.getString(3));
                     pessoa.setEndereco(cursor.getString(4));
+                    pessoaLista.add(pessoa);
                 } while (cursor.moveToNext());
         }
         db.close();

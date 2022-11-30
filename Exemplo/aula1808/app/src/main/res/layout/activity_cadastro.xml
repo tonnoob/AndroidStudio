@@ -9,7 +9,6 @@
 
     <!--para comentar utilize crtl + shift + /-->
 
-    <!--Aqui está o titulo-->
     <TextView
         android:id="@+id/cadastro"
         android:layout_width="match_parent"
@@ -20,7 +19,8 @@
         android:textSize="36sp"
         android:textStyle="bold"/>
 
-    <!--Aqui a imagem de fundo do app-->
+
+
     <ImageView
         android:id="@+id/imageview"
         android:layout_width="244dp"
@@ -28,7 +28,6 @@
         android:layout_gravity="center|center_horizontal|center_vertical"
         android:background="@drawable/ic_launcher_background"
         app:srcCompat="@android:drawable/ic_menu_call" />
-
 
     <EditText
         android:id="@+id/txtCodigo"
@@ -114,9 +113,20 @@
             android:layout_weight="1"
             android:text="Excluir"
             />
-
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Cadastro">
 
+        <ListView
+            android:id="@+id/listViewPessoa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
 
 </LinearLayout>
