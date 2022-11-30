@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/CADASTRO"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Visualizar"
+        android:textAlignment="center"
+        android:textColor="#FF5722"
+        android:textSize="36sp"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:layout_gravity="center|center_horizontal|center_vertical"
+        android:background="@android:color/holo_blue_bright"
+        app:srcCompat="@android:drawable/ic_menu_call" />
+
+    <TextView
+        android:id="@+id/vNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:inputType="textPersonName"
+        android:text=""/>
+
+    <TextView
+        android:id="@+id/vCelular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:inputType="textPersonName"
+        android:text=""/>
+
+
+    <TextView
+        android:id="@+id/vEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:inputType="textPersonName"
+        android:text=""/>
+
+    <TextView
+        android:id="@+id/vEndereco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:inputType="textPersonName"
+        android:text=""/>
+
+    <Button
+        android:id="@+id/btMostrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tela inicial" />
+
+
+
+
+
+
+</LinearLayout>
