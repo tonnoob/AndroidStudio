@@ -1,4 +1,4 @@
-package com.example.projetoagenda;
+package com.example.guardarsenha;
 
 import android.app.Service;
 import android.os.Bundle;
@@ -22,9 +22,7 @@ public class Cadastro extends AppCompatActivity {
 
     EditText cCodigo;
     EditText cNome;
-    EditText cTelefone;
-    EditText cEmail;
-    EditText cEndereco;
+    EditText cSenha;
     Button btSalvar;
     Button btExcluir;
     Button btLimpar;
@@ -142,37 +140,37 @@ public class Cadastro extends AppCompatActivity {
 
     //  btMostrar = findViewById( R.id.cadastro );
 
-     /*   btMostrar.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    /*   btMostrar.setOnClickListener( new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
 
-                chamaMostrar();
-            }
-
-
-
-        } );
+               chamaMostrar();
+           }
 
 
 
-    }
-
-        private void chamaMostrar () {
-            Intent it = new Intent(this, Mostrar.class);
-            it.putExtra("Valornome", cNome.getText().toString());
-            it.putExtra("Valorcelular", cCelular.getText().toString());
-            it.putExtra("Valoremail", cEmail.getText().toString());
-            it.putExtra("Valorendereco", cEndereco.getText().toString());
-
-            startActivityForResult(it, 1);
+       } );
 
 
-        }
+
+   }
+
+       private void chamaMostrar () {
+           Intent it = new Intent(this, Mostrar.class);
+           it.putExtra("Valornome", cNome.getText().toString());
+           it.putExtra("Valorcelular", cCelular.getText().toString());
+           it.putExtra("Valoremail", cEmail.getText().toString());
+           it.putExtra("Valorendereco", cEndereco.getText().toString());
+
+           startActivityForResult(it, 1);
+
+
+       }
 
 */
-     void escondeTeclado(){
-         imm.hideSoftInputFromWindow( cNome.getWindowToken(),0 );
-     }
+    void escondeTeclado(){
+        imm.hideSoftInputFromWindow( cNome.getWindowToken(),0 );
+    }
 
     public void limpaCampos() {
         cCodigo.setText("");
